@@ -2,12 +2,12 @@ from django.shortcuts import render
 
 
 def login_view(request):
-    return render(request, "users/login.html")
+    return render(request, "login.html")
 
 
 def register_view(request):
-    return render(request, "users/register.html")
+    return render(request, "coming-soon.html")
 
 
 def dashboard(request):
-    return render(request, "users/dashboard.html")
+    return render(request, "dashboard.html")
