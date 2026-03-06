@@ -1,0 +1,12 @@
+{% load static %}
+<header class="site-header">
+    <div class="container" style="padding: 12px 0; display: flex; justify-content: space-between; align-items: center;">
+        <a href="{% url 'shared:home' %}" class="logo" style="display:flex; align-items:center; gap:8px; text-decoration:none;">
+            <img src="{% static 'images/logo-icon.png' %}" alt="Logo" width="28" height="28">
+            <strong>My Shop</strong>
+        </a>
+        <div>
+            <a href="tel:+0123456789" style="text-decoration:none;">Call: +0123 456 789</a>
+        </div>
+    </div>
+</header>
