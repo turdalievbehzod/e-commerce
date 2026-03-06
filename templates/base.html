@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-Commerce{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/icons/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="border-bottom py-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="h4 text-decoration-none m-0" href="{% url 'shared:home' %}">Molla Store</a>
+        <nav>
+            <a class="me-3" href="{% url 'products:product_list' %}">Products</a>
+            <a class="me-3" href="{% url 'blogs:blog_list' %}">Blog</a>
+            <a class="me-3" href="{% url 'shared:cart' %}">Cart</a>
+            <a class="me-3" href="{% url 'shared:checkout' %}">Checkout</a>
+            <a class="me-3" href="{% url 'shared:faq' %}">FAQ</a>
+            <a class="me-3" href="{% url 'shared:contact' %}">Contact</a>
+            <a class="me-3" href="{% url 'users:login' %}">Login</a>
+            <a href="{% url 'users:register' %}">Register</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container mb-5">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="border-top py-4">
+    <div class="container text-center text-muted">© {% now "Y" %} Molla Store</div>
+</footer>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
