@@ -5,16 +5,16 @@ def home(request):
     return render(request, "home/index.html")
 
 
-def cart(request):
+def cart_view(request):
     return render(request, "shared/cart.html")
+
+
+def checkout_view(request):
+    return render(request, "shared/checkout.html")
 
 
 def wishlist(request):
     return render(request, "shared/wishlist.html")
-
-
-def checkout(request):
-    return render(request, "shared/checkout.html")
 
 
 def faq(request):
