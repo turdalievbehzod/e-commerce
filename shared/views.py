@@ -2,24 +2,24 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, "home/index.html")
+    return render(request, "index.html")
 
 
 def cart_view(request):
-    return render(request, "shared/cart.html")
+    return render(request, "cart.html")
 
 
 def checkout_view(request):
-    return render(request, "shared/checkout.html")
+    return render(request, "checkout.html")
 
 
 def wishlist(request):
-    return render(request, "shared/wishlist.html")
+    return render(request, "wishlist.html")
 
 
 def faq(request):
-    return render(request, "pages/faq.html")
+    return render(request, "faq.html")
 
 
 def contact(request):
-    return render(request, "pages/contact.html")
+    return render(request, "contact.html")
