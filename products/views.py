@@ -6,4 +6,4 @@ def product_list(request):
 
 
 def product_detail(request, id):
-    return render(request, "products/product.html", {"product_id": id})
+    return render(request, "products/product_detail.html", {"product_id": id})
