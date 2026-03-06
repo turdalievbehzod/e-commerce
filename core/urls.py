@@ -19,8 +19,15 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
-urlpatterns = []
+urlpatterns = [
+    path("home/", RedirectView.as_view(pattern_name="shared:home", permanent=False), name="home"),
+    path("about/", RedirectView.as_view(pattern_name="shared:about", permanent=False), name="about"),
+    path("contact/", RedirectView.as_view(pattern_name="shared:contact", permanent=False), name="contact"),
+    path("shop/", RedirectView.as_view(pattern_name="products:product_list", permanent=False), name="shop"),
+    path("blog/", RedirectView.as_view(pattern_name="blogs:blog_list", permanent=False), name="blog"),
+]
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('blogs/', include('blogs.urls', namespace='blogs')),
