@@ -6,4 +6,4 @@ def blog_list(request):
 
 
 def blog_detail(request, slug):
-    return render(request, "blogs/blog_detail.html", {"slug": slug})
+    return render(request, "blogs/blog_detail.html")
