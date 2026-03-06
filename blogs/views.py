@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 
 def blog_list(request):
-    return render(request, "blog.html")
+    return render(request, "blogs/blog.html")
 
 
-def blog_detail(request, slug):
-    return render(request, "single.html")
+def blog_detail(request):
+    return render(request, "blogs/single.html")
