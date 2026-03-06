@@ -1,10 +1,31 @@
-{% extends "base.html" %}
+{% extends "layout/base.html" %}
 {% load static %}
 
 {% block title %}Blog Detail{% endblock %}
 
 {% block content %}
-<h1>Blog Detail</h1>
-<p>Example article detail page rendered from Django template routing.</p>
-<a href="{% url 'blogs:blog_list' %}">Back to blog list</a>
+<nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'shared:home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'blogs:blog_list' %}">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ slug }}</li>
+        </ol>
+    </div>
+</nav>
+<div class="page-content">
+    <div class="container">
+        <article class="entry single-entry entry-fullwidth">
+            <div class="entry-body">
+                <div class="entry-meta"><span class="entry-author">by <a href="#">Admin</a></span><span class="meta-separator">|</span><a href="#">Nov 22, 2024</a></div>
+                <h2 class="entry-title entry-title-big">{{ slug|title }}</h2>
+                <div class="entry-content editor-content">
+                    <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti.</p>
+                    <blockquote><p>“Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est.”</p></blockquote>
+                    <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
 {% endblock %}
