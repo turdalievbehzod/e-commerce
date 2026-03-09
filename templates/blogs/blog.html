@@ -12,7 +12,7 @@ blog
     <div class="page-wrapper">
 
         <main class="main">
-        	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        	<div class="page-header text-center" style="background-image: url('{% static 'assets/images/page-header-bg.jpg' %}')">
         		<div class="container">
         			<h1 class="page-title">Blog Classic<span>Blog</span></h1>
         		</div><!-- End .container -->
@@ -29,182 +29,44 @@ blog
 
             <div class="page-content">
                 <div class="container">
-                	<div class="row">
-                		<div class="col-lg-9">
-                            <article class="entry">
-                                <figure class="entry-media">
-                                    <a href="{% static 'single.html' %}">
-                                        <img src="{% static 'assets/images/blog/post-1.jpg' %}" alt="image desc">
-                                    </a>
-                                </figure><!-- End .entry-media -->
+                	<div class="col-lg-9">
 
-                                <div class="entry-body">
-                                    <div class="entry-meta">
-                                        <span class="entry-author">
-                                            by <a href="#">John Doe</a>
-                                        </span>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">Nov 22, 2018</a>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">2 Comments</a>
-                                    </div><!-- End .entry-meta -->
+                                {% for blog in blogs %}
 
-                                    <h2 class="entry-title">
-                                        <a href="{% static 'single.html' %}">Cras ornare tristique elit.</a>
-                                    </h2><!-- End .entry-title -->
+                                <article class="entry">
 
-                                    <div class="entry-cats">
-                                        in <a href="#">Lifestyle</a>,
-                                        <a href="#">Shopping</a>
-                                    </div><!-- End .entry-cats -->
+                                    <figure class="entry-media">
 
-                                    <div class="entry-content">
-                                        <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.</p>
-                                        <a href="{% static 'single.html' %}" class="read-more">Continue Reading</a>
-                                    </div><!-- End .entry-content -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
+                                        <a href="{% url 'blogs:blog_detail' blog.slug %}">
 
-                            <article class="entry">
-                                <figure class="entry-media entry-video">
-                                    <a href="{% static 'single.html' %}">
-                                        <img src="{% static 'assets/images/blog/post-2.jpg' %}" alt="image desc">
-                                    </a>
-                                </figure><!-- End .entry-media -->
+                                            {% if blog.image %}
+                                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                                            {% else %}
+                                                <img src="{% static 'assets/images/blog/post-1.jpg' %}">
+                                            {% endif %}
 
-                                <div class="entry-body">
-                                    <div class="entry-meta">
-                                        <span class="entry-author">
-                                            by <a href="#">John Doe</a>
-                                        </span>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">Nov 21, 2018</a>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">0 Comments</a>
-                                    </div><!-- End .entry-meta -->
-
-                                    <h2 class="entry-title">
-                                        <a href="{% static 'single.html' %}">Vivamus vestibulum ntulla necante.</a>
-                                    </h2><!-- End .entry-title -->
-
-                                    <div class="entry-cats">
-                                        in <a href="#">Lifestyle</a>
-                                    </div><!-- End .entry-cats -->
-
-                                    <div class="entry-content">
-                                        <p>Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum eturna.</p>
-                                        <a href="{% static 'single.html' %}" class="read-more">Continue Reading</a>
-                                    </div><!-- End .entry-content -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
-
-                            <article class="entry">
-                                <figure class="entry-media">
-                                    <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl">
-                                        <a href="{% static 'single.html' %}">
-                                            <img src="{% static 'assets/images/blog/post-3.jpg' %}" alt="image desc">
                                         </a>
-                                        <a href="{% static 'single.html' %}">
-                                            <img src="{% static 'assets/images/blog/post-2.jpg' %}" alt="image desc">
-                                        </a>
-                                    </div><!-- End .owl-carousel -->
-                                </figure><!-- End .entry-media -->
 
-                                <div class="entry-body">
-                                    <div class="entry-meta">
-                                        <span class="entry-author">
-                                            by <a href="#">John Doe</a>
-                                        </span>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">Nov 18, 2018</a>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">3 Comments</a>
-                                    </div><!-- End .entry-meta -->
+                                    </figure>
 
-                                    <h2 class="entry-title">
-                                        <a href="{% static 'single.html' %}">Utaliquam sollicitudin leo.</a>
-                                    </h2><!-- End .entry-title -->
+                                    <div class="entry-body">
 
-                                    <div class="entry-cats">
-                                        in <a href="#">Fashion</a>,
-                                        <a href="#">Lifestyle</a>
-                                    </div><!-- End .entry-cats -->
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
+                                                {{ blog.title }}
+                                            </a>
+                                        </h2>
 
-                                    <div class="entry-content">
-                                        <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue. </p>
-                                        <a href="{% static 'single.html' %}" class="read-more">Continue Reading</a>
-                                    </div><!-- End .entry-content -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
+                                        <div class="entry-content">
+                                            {{ blog.summary }}
+                                        </div>
 
-                            <article class="entry">
-                                <figure class="entry-media">
-                                    <a href="{% static 'single.html' %}">
-                                        <img src="{% static 'assets/images/blog/post-4.jpg' %}" alt="image desc">
-                                    </a>
-                                </figure><!-- End .entry-media -->
+                                    </div>
 
-                                <div class="entry-body">
-                                    <div class="entry-meta">
-                                        <span class="entry-author">
-                                            by <a href="#">Jane Doe</a>
-                                        </span>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">Nov 15, 2018</a>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">4 Comments</a>
-                                    </div><!-- End .entry-meta -->
+                                </article>
 
-                                    <h2 class="entry-title">
-                                        <a href="{% static 'single.html' %}">Fusce pellentesque suscipit.</a>
-                                    </h2><!-- End .entry-title -->
-
-                                    <div class="entry-cats">
-                                        in <a href="#">Travel</a>
-                                    </div><!-- End .entry-cats -->
-
-                                    <div class="entry-content">
-                                        <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                                        <a href="{% static 'single.html' %}" class="read-more">Continue Reading</a>
-                                    </div><!-- End .entry-content -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
-
-                            <article class="entry">
-                                <figure class="entry-media">
-                                    <a href="{% static 'single.html' %}">
-                                        <img src="{% static 'assets/images/blog/post-5.jpg' %}" alt="image desc">
-                                    </a>
-                                </figure><!-- End .entry-media -->
-
-                                <div class="entry-body">
-                                    <div class="entry-meta">
-                                        <span class="entry-author">
-                                            by <a href="#">John Doe</a>
-                                        </span>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">Nov 11, 2018</a>
-                                        <span class="meta-separator">|</span>
-                                        <a href="#">2 Comments</a>
-                                    </div><!-- End .entry-meta -->
-
-                                    <h2 class="entry-title">
-                                        <a href="{% static 'single.html' %}">Aenean dignissim pellentesque felis.</a>
-                                    </h2><!-- End .entry-title -->
-
-                                    <div class="entry-cats">
-                                        in <a href="#">Travel</a>,
-                                        <a href="#">Hobbies</a>
-                                    </div><!-- End .entry-cats -->
-
-                                    <div class="entry-content">
-                                        <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
-                                        <a href="{% static 'single.html' %}" class="read-more">Continue Reading</a>
-                                    </div><!-- End .entry-content -->
-                                </div><!-- End .entry-body -->
-                            </article><!-- End .entry -->
-
-
+                                {% endfor %}
+                                
                 			<nav aria-label="Page navigation">
 							    <ul class="pagination">
 							        <li class="page-item disabled">

@@ -12,7 +12,7 @@ blog-details
     <div class="page-wrapper">
 
         <main class="main">
-        	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        	<div class="page-header text-center" style="background-image: url('{% static 'assets/images/page-header-bg.jpg' %}')">
         		<div class="container">
         			<h1 class="page-title">Default With Sidebar<span>Single Post</span></h1>
         		</div><!-- End .container -->
@@ -172,7 +172,7 @@ blog-details
                                     }'>
                                     <article class="entry entry-grid">
                                         <figure class="entry-media">
-                                            <a href="{% static 'single.html' %}">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                 <img src="{% static 'assets/images/blog/grid/3cols/post-1.jpg' %}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
@@ -185,7 +185,7 @@ blog-details
                                             </div><!-- End .entry-meta -->
 
                                             <h2 class="entry-title">
-                                                <a href="{% static 'single.html' %}">Cras ornare tristique elit.</a>
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">Cras ornare tristique elit.</a>
                                             </h2><!-- End .entry-title -->
 
                                             <div class="entry-cats">
@@ -197,7 +197,7 @@ blog-details
 
                                     <article class="entry entry-grid">
                                         <figure class="entry-media">
-                                            <a href="{% static 'single.html' %}">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                 <img src="{% static 'assets/images/blog/grid/3cols/post-2.jpg' %}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
@@ -210,7 +210,7 @@ blog-details
                                             </div><!-- End .entry-meta -->
 
                                             <h2 class="entry-title">
-                                                <a href="{% static 'single.html' %}">Vivamus ntulla necante.</a>
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">Vivamus ntulla necante.</a>
                                             </h2><!-- End .entry-title -->
 
                                             <div class="entry-cats">
@@ -221,7 +221,7 @@ blog-details
 
                                     <article class="entry entry-grid">
                                         <figure class="entry-media">
-                                            <a href="{% static 'single.html' %}">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                 <img src="{% static 'assets/images/blog/grid/3cols/post-3.jpg' %}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
@@ -234,7 +234,7 @@ blog-details
                                             </div><!-- End .entry-meta -->
 
                                             <h2 class="entry-title">
-                                                <a href="{% static 'single.html' %}">Utaliquam sollicitudin leo.</a>
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">Utaliquam sollicitudin leo.</a>
                                             </h2><!-- End .entry-title -->
 
                                             <div class="entry-cats">
@@ -246,7 +246,7 @@ blog-details
 
                                     <article class="entry entry-grid">
                                         <figure class="entry-media">
-                                            <a href="{% static 'single.html' %}">
+                                            <a href="{% url 'blogs:blog_detail' blog.slug %}">
                                                 <img src="{% static 'assets/images/blog/grid/3cols/post-4.jpg' %}" alt="image desc">
                                             </a>
                                         </figure><!-- End .entry-media -->
@@ -259,7 +259,7 @@ blog-details
                                             </div><!-- End .entry-meta -->
 
                                             <h2 class="entry-title">
-                                                <a href="{% static 'single.html' %}">Fusce pellentesque suscipit.</a>
+                                                <a href="{% url 'blogs:blog_detail' blog.slug %}">Fusce pellentesque suscipit.</a>
                                             </h2><!-- End .entry-title -->
 
                                             <div class="entry-cats">

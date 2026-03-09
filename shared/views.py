@@ -1,8 +1,18 @@
 from django.shortcuts import render
 
+from products.models import Product
+from blogs.models import BlogPost
 
 def home(request):
-    return render(request, "shared/index.html")
+    products = Product.objects.filter(is_active=True)[:8]
+    blogs = BlogPost.objects.filter(is_published=True)[:3]
+
+    context = {
+        "products": products,
+        "blogs": blogs,
+    }
+
+    return render(request, "shared/index.html", context)
 
 
 def cart_view(request):
