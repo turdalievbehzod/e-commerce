@@ -101,11 +101,29 @@ blog
                                     <h3 class="widget-title">Categories</h3><!-- End .widget-title -->
 
                                     <ul>
-                                        <li><a href="#">Lifestyle<span>3</span></a></li>
-                                        <li><a href="#">Shopping<span>3</span></a></li>
-                                        <li><a href="#">Fashion<span>1</span></a></li>
-                                        <li><a href="#">Travel<span>3</span></a></li>
-                                        <li><a href="#">Hobbies<span>2</span></a></li>
+                                        <ul>
+
+                                            {% for category in categories %}
+
+                                            <li>
+
+                                            <a href="#">
+
+                                            {{ category.name }}
+
+                                            </a>
+
+                                            <span>
+
+                                            {{ category.posts.count }}
+
+                                            </span>
+
+                                            </li>
+
+                                            {% endfor %}
+
+                                            </ul>
                                     </ul>
                                 </div><!-- End .widget -->
 
@@ -178,14 +196,18 @@ blog
                                     <h3 class="widget-title">Browse Tags</h3><!-- End .widget-title -->
 
                                     <div class="tagcloud">
-                                        <a href="#">fashion</a>
-                                        <a href="#">style</a>
-                                        <a href="#">women</a>
-                                        <a href="#">photography</a>
-                                        <a href="#">travel</a>
-                                        <a href="#">shopping</a>
-                                        <a href="#">hobbies</a>
-                                    </div><!-- End .tagcloud -->
+
+                                    {% for tag in tags %}
+
+                                    <a href="#">
+
+                                    {{ tag.name }}
+
+                                    </a>
+
+                                    {% endfor %}
+
+                                    </div>
                                 </div><!-- End .widget -->
 
                                 <div class="widget widget-text">

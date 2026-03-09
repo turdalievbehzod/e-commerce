@@ -16,4 +16,16 @@ def product_list(request):
 
 
 def product_detail(request, id):
-    return render(request, "products/product.html")
+
+    product = Product.objects.get(id=id)
+
+    related_products = Product.objects.exclude(id=id)[:4]
+
+    return render(
+        request,
+        "products/product.html",
+        {
+            "product": product,
+            "related_products": related_products
+        }
+    )
