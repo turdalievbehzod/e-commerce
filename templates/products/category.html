@@ -13,7 +13,7 @@ category
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('{% static 'assets/images/page-header-bg.jpg' %}')">
         		<div class="container">
-        			<h1 class="page-title">Grid 3 Columns<span>Shop</span></h1>
+        			<h1 class="page-title">Products<span>Shop</span></h1>
         		</div><!-- End .container -->
         	</div><!-- End .page-header -->
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -21,7 +21,7 @@ category
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'shared:home' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Grid 3 Columns</li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
@@ -33,7 +33,7 @@ category
                 			<div class="toolbox">
                 				<div class="toolbox-left">
                 					<div class="toolbox-info">
-                						Showing <span>9 of 56</span> Products
+                						Showing <span>{{ products|length }}</span> Products
                 					</div><!-- End .toolbox-info -->
                 				</div><!-- End .toolbox-left -->
 

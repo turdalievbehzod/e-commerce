@@ -15,14 +15,14 @@ login
             <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'shared:home' %}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Login</li>
+                        <li class="breadcrumb-item"><a href="{% url 'shared:home' %}">{% trans "Home" %}</a></li>
+                        <li class="breadcrumb-item"><a href="#">{% trans "Pages" %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans "Login" %}</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
 
-            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('assets/images/backgrounds/login-bg.jpg')">
+            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('{% static 'assets/images/backgrounds/login-bg.jpg' %}')">
             	<div class="container">
             		<div class="form-box">
             			<div class="form-tab">
@@ -36,64 +36,81 @@ login
 							</ul>
 							<div class="tab-content">
 							    <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-							    	<form action="#">
+							    	<form method="post" action="{% url 'users:login' %}">
+										{% csrf_token %}
+										{% if messages %}
+											{% for message in messages %}
+												<div class="alert alert-danger">
+													{{ message }}
+												</div>
+											{% endfor %}
+										{% endif %}
 							    		<div class="form-group">
-							    			<label for="singin-email-2">Username or email address *</label>
-							    			<input type="text" class="form-control" id="singin-email-2" name="singin-email" required>
+							    			<label for="singin-email-2">{% trans 'Username or email address *' %}</label>
+							    			<input type="text" class="form-control" name="username" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-group">
-							    			<label for="singin-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="singin-password-2" name="singin-password" required>
+							    			<label for="singin-password-2">{% trans 'Password *' %}</label>
+							    			<input type="password" class="form-control" name="password" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">
-			                					<span>LOG IN</span>
+			                					<span>{% trans 'LOG IN' %}</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
 
 			                				<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="signin-remember-2">
-												<label class="custom-control-label" for="signin-remember-2">Remember Me</label>
+												<label class="custom-control-label" for="signin-remember-2">{% trans 'Remember Me' %}</label>
 											</div><!-- End .custom-checkbox -->
 
-											<a href="#" class="forgot-link">Forgot Your Password?</a>
+											<a href="#" class="forgot-link">{% trans 'Forgot Your Password?' %}</a>
 							    		</div><!-- End .form-footer -->
 							    	</form>
 							    	<div class="form-choice">
-								    	<p class="text-center">or sign in with</p>
+								    	<p class="text-center">or {% trans "Sign In" %} with</p>
 								    	<div class="row">
 								    		<div class="col-sm-6">
 								    			<a href="#" class="btn btn-login btn-g">
 								    				<i class="icon-google"></i>
-								    				Login With Google
+								    				{% trans 'Login With Google' %}
 								    			</a>
 								    		</div><!-- End .col-6 -->
 								    		<div class="col-sm-6">
 								    			<a href="#" class="btn btn-login btn-f">
 								    				<i class="icon-facebook-f"></i>
-								    				Login With Facebook
+								    				{% trans 'Login With Facebook' %}
 								    			</a>
 								    		</div><!-- End .col-6 -->
 								    	</div><!-- End .row -->
 							    	</div><!-- End .form-choice -->
 							    </div><!-- .End .tab-pane -->
 							    <div class="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
-							    	<form action="#">
+							    	<form method="post" action="{% url 'users:register' %}">
+										{% csrf_token %}
+										{% if messages %}
+											{% for message in messages %}
+												<div class="alert alert-danger">
+													{{ message }}
+												</div>
+											{% endfor %}
+										{% endif %}
 							    		<div class="form-group">
-							    			<label for="register-email-2">Your email address *</label>
-							    			<input type="email" class="form-control" id="register-email-2" name="register-email" required>
+							    			<label for="register-email-2">{% trans 'Your email address *' %}</label>
+							    			<input type="text" class="form-control" name="username" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-group">
-							    			<label for="register-password-2">Password *</label>
-							    			<input type="password" class="form-control" id="register-password-2" name="register-password" required>
+							    			<label for="register-password-2">{% trans 'Password *' %}</label>
+							    			<input type="password" class="form-control" name="password1" required>
+											<input type="password" class="form-control" name="password2" required>
 							    		</div><!-- End .form-group -->
 
 							    		<div class="form-footer">
 							    			<button type="submit" class="btn btn-outline-primary-2">
-			                					<span>SIGN UP</span>
+			                					<span>{% trans 'SIGN UP' %}</span>
 			            						<i class="icon-long-arrow-right"></i>
 			                				</button>
 
@@ -104,18 +121,18 @@ login
 							    		</div><!-- End .form-footer -->
 							    	</form>
 							    	<div class="form-choice">
-								    	<p class="text-center">or sign in with</p>
+								    	<p class="text-center">or {% trans "Sign In with" %} </p>
 								    	<div class="row">
 								    		<div class="col-sm-6">
 								    			<a href="#" class="btn btn-login btn-g">
 								    				<i class="icon-google"></i>
-								    				Login With Google
+								    				{% trans 'Login With Google' %}
 								    			</a>
 								    		</div><!-- End .col-6 -->
 								    		<div class="col-sm-6">
 								    			<a href="#" class="btn btn-login  btn-f">
 								    				<i class="icon-facebook-f"></i>
-								    				Login With Facebook
+								    				{% trans 'Login With Facebook' %}
 								    			</a>
 								    		</div><!-- End .col-6 -->
 								    	</div><!-- End .row -->
